@@ -6,11 +6,13 @@
     <!-- SECURITY: Strict Content Security Policy -->
     <meta name="referrer" content="no-referrer">
     <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://unpkg.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' wss:; object-src 'none'; base-uri 'none'; form-action 'none';">
-    <title>Nexus - Secure Terminal</title>
+    <title>Spectre - Secure Terminal</title>
+    <meta name="theme-color" content="#0f0f16">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230f0f16'/%3E%3Cpath d='M12 4C8.5 4 6 6.6 6 10v9l2-1.7 2 1.7 2-1.7 2 1.7 2-1.7 2 1.7v-9c0-3.4-2.5-6-6-6z' fill='%238b5cf6'/%3E%3Ccircle cx='10' cy='10.5' r='1' fill='%230f0f16'/%3E%3Ccircle cx='14' cy='10.5' r='1' fill='%230f0f16'/%3E%3C/svg%3E">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = { darkMode: 'class' }
+        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { gray: { 50:'#f7f7fa',100:'#efeff5',200:'#e1e1ea',300:'#c9c9d6',400:'#9a9aae',500:'#6f6f85',600:'#4d4d60',700:'#2f2f3c',800:'#1a1a24',900:'#0f0f16',950:'#08080d' } } } } }
     </script>
     <!-- QRCode.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -30,27 +32,27 @@
         .dark ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); }
         
         .chat-bubble-me {
-            background-color: #dcf8c6;
-            color: #111b21;
+            background-color: #ede9fe;
+            color: #0f0f16;
         }
         html[dir="ltr"] .chat-bubble-me { border-top-right-radius: 4px !important; }
         html[dir="rtl"] .chat-bubble-me { border-top-left-radius: 4px !important; }
-        .dark .chat-bubble-me { background-color: #005c4b; color: #e9edef; }
+        .dark .chat-bubble-me { background-color: #4c1d95; color: #e8e6f0; }
         
         .chat-bubble-other {
             background-color: #ffffff;
-            color: #111b21;
+            color: #0f0f16;
         }
         html[dir="ltr"] .chat-bubble-other { border-top-left-radius: 4px !important; }
         html[dir="rtl"] .chat-bubble-other { border-top-right-radius: 4px !important; }
-        .dark .chat-bubble-other { background-color: #202c33; color: #e9edef; }
+        .dark .chat-bubble-other { background-color: #17171f; color: #e8e6f0; }
 
         .chat-bg {
-            background-color: #efeae2;
+            background-color: #f3f2f8;
             background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23000000' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
         .dark .chat-bg {
-            background-color: #0b141a;
+            background-color: #08080d;
             background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%23ffffff' fill-opacity='0.02' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
     </style>
@@ -77,22 +79,23 @@
 
     <!-- VIEW 1: HOME -->
     <div id="view-home" class="flex-1 flex flex-col items-center justify-center p-6 w-full max-w-md mx-auto h-full relative">
-        <div class="mb-4 text-teal-600 dark:text-teal-400">
-            <svg class="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        <div class="mb-4 text-violet-600 dark:text-violet-400">
+            <svg class="w-20 h-20 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3C8 3 5 6 5 10v10l2.33-2 2.34 2L12 18l2.33 2 2.34-2L19 20V10c0-4-3-7-7-7z"></path><circle cx="9.5" cy="10.5" r="1" fill="currentColor"></circle><circle cx="14.5" cy="10.5" r="1" fill="currentColor"></circle></svg>
         </div>
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight">Nexus</h1>
-        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 text-center" data-i18n="appDesc">Fast & Secure P2P Communication.</p>
+        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2 tracking-tight">Spectre</h1>
+        <p class="text-gray-500 dark:text-gray-400 text-sm mb-6 text-center" data-i18n="appDesc">Zero-trust, end-to-end encrypted P2P terminal. Leaves no trace.</p>
         
         <!-- Name Input Area -->
         <div class="w-full mb-6">
-            <input type="text" id="input-my-name" data-i18n-placeholder="enterName" placeholder="Your Name" maxlength="20" class="w-full px-4 py-3 text-center text-lg font-bold rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition shadow-sm">
+            <input type="text" id="input-my-name" data-i18n-placeholder="enterName" placeholder="Your Name" maxlength="20" class="w-full px-4 py-3 text-center text-lg font-bold rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-violet-500 focus:border-transparent outline-none transition shadow-sm">
         </div>
 
-        <label class="w-full mb-4 -mt-2 flex items-center justify-center gap-2 text-xs text-gray-500 dark:text-gray-400 cursor-pointer select-none"><input type="checkbox" id="strict-toggle" class="accent-teal-500 w-4 h-4"><span data-i18n="strictLabel">Block messaging until security code is verified</span></label>
+        <label class="w-full mb-4 -mt-2 flex items-center justify-center gap-2 text-xs text-gray-500 dark:text-gray-400 cursor-pointer select-none"><input type="checkbox" id="strict-toggle" class="accent-violet-500 w-4 h-4"><span data-i18n="strictLabel">Block messaging until security code is verified</span></label>
+                <label class="w-full mb-4 flex items-center justify-center gap-2 text-xs text-gray-500 dark:text-gray-400 cursor-pointer select-none"><input type="checkbox" id="lockwipe-toggle" class="accent-violet-500 w-4 h-4 shrink-0"><span data-i18n="lockWipeLabel">Destroy chat instantly when the screen locks or the app leaves the foreground</span></label>
                 <details class="w-full mb-6 text-xs text-gray-500 dark:text-gray-400"><summary class="cursor-pointer text-center select-none" data-i18n="advanced">Advanced</summary>
                     <input type="text" id="input-broker" dir="ltr" maxlength="120" placeholder="wss://broker.example.com:8884/mqtt" class="mt-2 w-full px-3 py-2 text-center font-mono text-xs rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
                     <p class="mt-1 text-center" data-i18n="brokerHint">Own MQTT broker (wss://). Guest must use the same.</p></details>
-                <button id="btn-create-room" class="w-full mb-6 bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-4 rounded-xl shadow-lg transform transition active:scale-95 flex justify-center items-center text-lg">
+                <button id="btn-create-room" class="w-full mb-6 bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 px-4 rounded-xl shadow-lg transform transition active:scale-95 flex justify-center items-center text-lg">
             <svg class="w-6 h-6 me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
             <span data-i18n="createNode">Create Secure Node</span>
         </button>
@@ -105,20 +108,20 @@
 
         <div class="w-full space-y-4">
             <div class="flex space-x-2 rtl:space-x-reverse w-full">
-                <button id="btn-home-scan" title="Scan QR Code" class="bg-gray-100 dark:bg-gray-800 text-teal-600 dark:text-teal-400 px-4 rounded-xl shadow-sm border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition active:scale-95 shrink-0 flex items-center justify-center">
+                <button id="btn-home-scan" title="Scan QR Code" class="bg-gray-100 dark:bg-gray-800 text-violet-600 dark:text-violet-400 px-4 rounded-xl shadow-sm border border-gray-300 dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700 transition active:scale-95 shrink-0 flex items-center justify-center">
                     <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
                 </button>
-                <input type="text" id="input-join-code" maxlength="7" dir="ltr" class="w-full px-4 py-4 text-center text-2xl tracking-[0.3em] font-mono rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none transition uppercase shadow-sm" placeholder="_______">
+                <input type="text" id="input-join-code" maxlength="7" dir="ltr" class="w-full px-4 py-4 text-center text-2xl tracking-[0.3em] font-mono rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-violet-500 focus:border-transparent outline-none transition uppercase shadow-sm" placeholder="_______">
             </div>
             
-            <button id="btn-join-room" class="w-full bg-white dark:bg-gray-800 border-2 border-teal-500 text-teal-600 dark:text-teal-400 hover:bg-teal-50 dark:hover:bg-gray-700 font-bold py-4 px-4 rounded-xl shadow-sm transform transition active:scale-95 text-lg" data-i18n="connectBtn">
+            <button id="btn-join-room" class="w-full bg-white dark:bg-gray-800 border-2 border-violet-500 text-violet-600 dark:text-violet-400 hover:bg-violet-50 dark:hover:bg-gray-700 font-bold py-4 px-4 rounded-xl shadow-sm transform transition active:scale-95 text-lg" data-i18n="connectBtn">
                 Connect Device
             </button>
         </div>
 
         <!-- LEGAL FOOTER LINK -->
         <div class="absolute bottom-4 w-full text-center">
-            <button id="btn-open-legal" class="text-xs text-gray-400 hover:text-teal-500 transition font-medium" data-i18n="legalTitle">Legal & Disclaimer</button>
+            <button id="btn-open-legal" class="text-xs text-gray-400 hover:text-violet-500 transition font-medium" data-i18n="legalTitle">Legal & Disclaimer</button>
         </div>
     </div>
 
@@ -133,7 +136,7 @@
         
         <div class="text-center w-full mb-8">
             <span class="text-xs text-gray-400 dark:text-gray-500 uppercase tracking-widest block mb-1" data-i18n="sessionCode">Session Code</span>
-            <span id="display-session-code" class="text-3xl font-mono font-bold text-teal-600 dark:text-teal-400 tracking-[0.2em] block mb-4" dir="ltr"></span>
+            <span id="display-session-code" class="text-3xl font-mono font-bold text-violet-600 dark:text-violet-400 tracking-[0.2em] block mb-4" dir="ltr"></span>
             
             <button id="btn-copy-link" class="text-sm bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 py-2 px-6 rounded-full font-bold transition flex items-center justify-center mx-auto active:scale-95">
                 <svg class="w-4 h-4 me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
@@ -143,27 +146,27 @@
         
         <div id="waiting-spinner" class="flex flex-col items-center justify-center space-y-3 mb-6 w-full">
             <div class="flex space-x-2 rtl:space-x-reverse">
-                <div class="w-2.5 h-2.5 bg-teal-500 rounded-full animate-bounce"></div>
-                <div class="w-2.5 h-2.5 bg-teal-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-                <div class="w-2.5 h-2.5 bg-teal-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                <div class="w-2.5 h-2.5 bg-violet-500 rounded-full animate-bounce"></div>
+                <div class="w-2.5 h-2.5 bg-violet-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                <div class="w-2.5 h-2.5 bg-violet-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
             </div>
             <span class="text-gray-500 dark:text-gray-400 font-medium text-sm" data-i18n="waitingConn">Waiting for incoming connection...</span>
         </div>
 
-        <div id="area-room-permission" class="hidden w-full bg-white dark:bg-gray-800 border border-teal-200 dark:border-gray-700 rounded-2xl p-5 shadow-lg transform transition-all duration-300">
+        <div id="area-room-permission" class="hidden w-full bg-white dark:bg-gray-800 border border-violet-200 dark:border-gray-700 rounded-2xl p-5 shadow-lg transform transition-all duration-300">
             <div class="flex items-center mb-4">
-                <div class="w-12 h-12 bg-teal-100 dark:bg-teal-900/50 rounded-full flex items-center justify-center text-teal-600 dark:text-teal-400 me-4">
+                <div class="w-12 h-12 bg-violet-100 dark:bg-violet-900/50 rounded-full flex items-center justify-center text-violet-600 dark:text-violet-400 me-4">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"></path></svg>
                 </div>
                 <div>
                     <h4 class="font-bold text-gray-900 dark:text-white text-base leading-tight" id="permission-name">Someone wants to connect.</h4>
                     <p class="text-xs text-gray-500 dark:text-gray-400" data-i18n="identityReq">Identity verification required.</p>
-                    <p class="text-xs mt-1 text-teal-600 dark:text-teal-400"><span data-i18n="sasLabel">Security code</span>: <b id="permission-sas" class="font-mono text-sm" dir="ltr"></b></p>
+                    <p class="text-xs mt-1 text-violet-600 dark:text-violet-400"><span data-i18n="sasLabel">Security code</span>: <b id="permission-sas" class="font-mono text-sm" dir="ltr"></b></p>
                 </div>
             </div>
             <div class="flex space-x-3 rtl:space-x-reverse w-full">
                 <button id="btn-reject" class="flex-1 py-2.5 px-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-bold rounded-xl transition text-sm" data-i18n="deny">Deny</button>
-                <button id="btn-approve" class="flex-1 py-2.5 px-3 bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-xl shadow-md transition text-sm" data-i18n="accept">Accept</button>
+                <button id="btn-approve" class="flex-1 py-2.5 px-3 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-xl shadow-md transition text-sm" data-i18n="accept">Accept</button>
             </div>
         </div>
 
@@ -173,12 +176,12 @@
     <!-- VIEW 3: CHAT / TERMINAL -->
     <div id="view-chat" class="hidden h-[100dvh] w-full flex-col chat-bg transition-colors duration-300">
         
-        <header class="bg-[#f0f2f5] dark:bg-[#202c33] ps-2 pe-24 py-3 flex items-center shadow-sm shrink-0 z-[50] pt-4">
+        <header class="bg-[#f3f2f8] dark:bg-[#17171f] ps-2 pe-24 py-3 flex items-center shadow-sm shrink-0 z-[50] pt-4">
             <button id="btn-leave-chat" class="p-2 mr-1 rtl:ml-1 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-full transition" title="Leave Chat">
                 <svg class="w-6 h-6 rtl:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
             </button>
             <div class="flex items-center space-x-3 rtl:space-x-reverse">
-                <div class="w-10 h-10 rounded-full bg-teal-500 text-white flex items-center justify-center font-bold text-lg shadow-sm uppercase" id="chat-avatar">?</div>
+                <div class="w-10 h-10 rounded-full bg-violet-500 text-white flex items-center justify-center font-bold text-lg shadow-sm uppercase" id="chat-avatar">?</div>
                 <div class="flex flex-col">
                     <h3 class="font-bold text-gray-900 dark:text-white leading-tight text-base" id="chat-title">Unknown User</h3>
                     <p class="text-[11px] text-gray-500 dark:text-gray-400 flex items-center" dir="ltr">
@@ -195,17 +198,17 @@
                     <p id="verify-code" class="font-mono font-bold text-lg tracking-widest text-gray-900 dark:text-white" dir="ltr"></p>
                 </div>
                 <button id="btn-verify-no" class="py-2 px-3 bg-red-500 hover:bg-red-600 text-white font-bold rounded-xl text-xs transition" data-i18n="verifyNo">Mismatch</button>
-                <button id="btn-verify-yes" class="py-2 px-3 bg-teal-500 hover:bg-teal-600 text-white font-bold rounded-xl shadow-md text-xs transition" data-i18n="verifyYes">Match</button>
+                <button id="btn-verify-yes" class="py-2 px-3 bg-violet-500 hover:bg-violet-600 text-white font-bold rounded-xl shadow-md text-xs transition" data-i18n="verifyYes">Match</button>
             </div>
         </div>
 
         <main id="chat-messages" class="flex-1 overflow-y-auto p-3 space-y-2 relative flex flex-col w-full max-w-4xl mx-auto">
             <div class="text-center w-full my-2">
-                <span class="bg-[#ffeecd] dark:bg-[#182229] text-gray-700 dark:text-[#ffd279] text-xs px-3 py-1.5 rounded-lg shadow-sm inline-block max-w-xs leading-relaxed text-center" data-i18n="e2eMsg">
+                <span class="bg-[#ede9fe] dark:bg-[#1a1626] text-gray-700 dark:text-[#c4b5fd] text-xs px-3 py-1.5 rounded-lg shadow-sm inline-block max-w-xs leading-relaxed text-center" data-i18n="e2eMsg">
                     🔒 Messages are end-to-end encrypted. No one outside of this chat can read or listen to them.
                 </span>
             </div>
-            <div id="typing-indicator" class="hidden self-start bg-white dark:bg-[#202c33] text-gray-500 dark:text-gray-400 text-xs px-3 py-2 rounded-2xl rounded-ts-sm shadow-sm items-center space-x-1 rtl:space-x-reverse w-max mt-2">
+            <div id="typing-indicator" class="hidden self-start bg-white dark:bg-[#17171f] text-gray-500 dark:text-gray-400 text-xs px-3 py-2 rounded-2xl rounded-ts-sm shadow-sm items-center space-x-1 rtl:space-x-reverse w-max mt-2">
                 <span id="typing-name" class="font-medium">User</span>
                 <span data-i18n="isTyping">is typing</span>
                 <span class="w-1 h-1 bg-gray-400 rounded-full animate-bounce mx-0.5"></span>
@@ -214,16 +217,16 @@
             </div>
         </main>
 
-        <footer class="bg-[#f0f2f5] dark:bg-[#202c33] p-2 shrink-0 z-50">
+        <footer class="bg-[#f3f2f8] dark:bg-[#17171f] p-2 shrink-0 z-50">
             <div class="max-w-4xl mx-auto flex items-end space-x-2 rtl:space-x-reverse">
                 <input type="file" id="file-input" accept="image/jpeg, image/png, image/webp" class="hidden">
                 <button type="button" id="btn-attach" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-2.5 transition shrink-0">
                     <svg class="w-6 h-6 transform rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path></svg>
                 </button>
-                <form id="form-chat" class="flex-1 flex items-end bg-white dark:bg-[#2a3942] rounded-xl shadow-sm border border-transparent focus-within:border-teal-500 overflow-hidden">
+                <form id="form-chat" class="flex-1 flex items-end bg-white dark:bg-[#1f1f2b] rounded-xl shadow-sm border border-transparent focus-within:border-violet-500 overflow-hidden">
                     <textarea id="input-chat" rows="1" maxlength="2000" class="flex-1 max-h-32 px-4 py-3 bg-transparent text-gray-900 dark:text-white outline-none resize-none text-[15px]" data-i18n-placeholder="typeMsg" placeholder="Type a message..."></textarea>
                 </form>
-                <button type="submit" id="btn-send-msg" class="bg-teal-500 hover:bg-teal-600 text-white rounded-full h-11 w-11 flex-shrink-0 flex items-center justify-center shadow-md transition transform active:scale-95 mb-0.5">
+                <button type="submit" id="btn-send-msg" class="bg-violet-500 hover:bg-violet-600 text-white rounded-full h-11 w-11 flex-shrink-0 flex items-center justify-center shadow-md transition transform active:scale-95 mb-0.5">
                     <svg class="w-5 h-5 rtl:-scale-x-100 ml-0.5 rtl:ml-0 rtl:mr-0.5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
                     </svg>
@@ -243,7 +246,7 @@
         <div class="flex-1 w-full relative">
             <div id="reader" class="w-full h-full object-cover"></div>
             <div class="absolute inset-0 border-[10px] border-black/40 pointer-events-none flex items-center justify-center">
-                <div class="w-64 h-64 border-2 border-teal-500 rounded-xl animate-pulse"></div>
+                <div class="w-64 h-64 border-2 border-violet-500 rounded-xl animate-pulse"></div>
             </div>
         </div>
     </div>
@@ -259,7 +262,7 @@
     <!-- LEGAL DISCLAIMER MODAL -->
     <div id="legal-modal" class="hidden fixed inset-0 z-[300] bg-black/80 flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
         <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-md w-full p-6 shadow-2xl transform scale-95 transition-transform duration-300" id="legal-modal-content">
-            <div class="flex items-center text-teal-600 dark:text-teal-400 mb-4">
+            <div class="flex items-center text-violet-600 dark:text-violet-400 mb-4">
                 <svg class="w-8 h-8 me-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                 <h3 class="text-xl font-bold text-gray-900 dark:text-white" data-i18n="legalTitle">Legal & Disclaimer</h3>
             </div>
@@ -280,13 +283,13 @@
            0. TRANSLATION SYSTEM (i18n)
            ========================================= */
         const i18n = {
-            en: { appDesc: "Fast & Secure P2P Communication.", createNode: "Create Secure Node", orJoin: "OR JOIN VIA CODE", connectBtn: "Connect Device", nodeActive: "Node Active", nodeDesc: "Scan QR or share the link with the guest device.", sessionCode: "Session Code", copyLink: "Copy Link", waitingConn: "Waiting for incoming connection...", wantsToConnect: "wants to connect.", identityReq: "Identity verification required.", deny: "Deny", accept: "Accept", endSession: "End Session", exit: "Exit", e2eMsg: "🔒 Messages are end-to-end encrypted. No one outside of this chat can read or listen to them.", isTyping: "is typing", typeMsg: "Type a message...", scanToJoin: "Scan QR to Join", enterName: "Your Name", unknownUser: "Unknown User", copied: "Link Copied!", invalidCode: "Enter 7-character code.", connecting: "Connecting...", waitingHost: "Identity sent, waiting for host...", unreachable: "Cannot reach node.", disconnected: "disconnected.", rejected: "Connection Rejected.", panicMode: "Panic Mode: Session Destroyed!", legalTitle: "Legal & Disclaimer", legalText: "This software is provided 'as is' without warranty of any kind. The developer assumes no responsibility or liability for any misuse, illegal activities, or data loss. By using this tool, you accept full responsibility for your actions and compliance with local laws.", closeBtn: "Close", sasLabel: "Security code (must match on both screens)", securing: "Securing channel…", verifyHint: "Compare this code with the other device's screen.", verifyYes: "Match", verifyNo: "Mismatch", verifyBad: "Security code mismatch — session destroyed. Someone may be intercepting.", verified: "Verified", expired: "Room expired or closed.", gapWarn: "Message missing — someone may be dropping messages.", verifyFirst: "Verify the security code first.", strictLabel: "Block messaging until security code is verified", advanced: "Advanced", brokerHint: "Own MQTT broker (wss://). Guest must use the same.", invalidBroker: "Invalid broker address." },
-            tr: { appDesc: "Hızlı & Güvenli P2P İletişim.", createNode: "Güvenli Oda Kur", orJoin: "VEYA KOD İLE KATIL", connectBtn: "Cihaza Bağlan", nodeActive: "Oda Aktif", nodeDesc: "QR kodu okutun veya misafir cihazla linki paylaşın.", sessionCode: "Bağlantı Kodu", copyLink: "Linki Kopyala", waitingConn: "Gelen bağlantı bekleniyor...", wantsToConnect: "bağlanmak istiyor.", identityReq: "Kimlik doğrulaması gerekiyor.", deny: "Reddet", accept: "Kabul Et", endSession: "Oturumu Sonlandır", exit: "Çıkış", e2eMsg: "🔒 Mesajlar uçtan uca şifrelidir. Bu sohbetin dışındaki hiç kimse onları okuyamaz veya dinleyemez.", isTyping: "yazıyor", typeMsg: "Bir mesaj yazın...", scanToJoin: "Katılmak İçin Okut", enterName: "İsminiz", unknownUser: "Bilinmeyen Kullanıcı", copied: "Link Kopyalandı!", invalidCode: "7 haneli kodu girin.", connecting: "Bağlanılıyor...", waitingHost: "İstek gönderildi, onay bekleniyor...", unreachable: "Sunucuya ulaşılamadı.", disconnected: "ayrıldı.", rejected: "Bağlantı Reddedildi.", panicMode: "Panik Modu: Oturum İmha Edildi!", legalTitle: "Yasal Uyarı & Sorumluluk Reddi", legalText: "Bu yazılım hiçbir garanti verilmeksizin 'olduğu gibi' sunulmaktadır. Geliştirici; yasadışı kullanım, veri kaybı veya doğabilecek zararlardan sorumlu tutulamaz. Bu aracı kullanarak, eylemlerinizin yerel yasalara uygunluğundan tamamen kendinizin sorumlu olduğunu kabul edersiniz.", closeBtn: "Kapat", sasLabel: "Güvenlik kodu (iki ekranda aynı olmalı)", securing: "Kanal güvenliği sağlanıyor…", verifyHint: "Bu kodu karşı cihazın ekranıyla karşılaştırın.", verifyYes: "Eşleşiyor", verifyNo: "Eşleşmiyor", verifyBad: "Güvenlik kodu uyuşmadı — oturum yok edildi. Biri araya girmiş olabilir.", verified: "Doğrulandı", expired: "Oda süresi doldu veya kapandı.", gapWarn: "Mesaj eksik — biri mesajları düşürüyor olabilir.", verifyFirst: "Önce güvenlik kodunu doğrulayın.", strictLabel: "Güvenlik kodu doğrulanana kadar mesajlaşmayı engelle", advanced: "Gelişmiş", brokerHint: "Kendi MQTT broker'ınız (wss://). Misafir de aynısını kullanmalı.", invalidBroker: "Geçersiz broker adresi." },
-            es: { appDesc: "Comunicación P2P rápida y segura.", createNode: "Crear Nodo Seguro", orJoin: "O ÚNETE VÍA CÓDIGO", connectBtn: "Conectar Dispositivo", nodeActive: "Nodo Activo", nodeDesc: "Escanea el QR o comparte el enlace con el dispositivo invitado.", sessionCode: "Código de Sesión", copyLink: "Copiar Enlace", waitingConn: "Esperando conexión entrante...", wantsToConnect: "quiere conectarse.", identityReq: "Se requiere verificación de identidad.", deny: "Rechazar", accept: "Aceptar", endSession: "Finalizar Sesión", exit: "Salir", e2eMsg: "🔒 Los mensajes están cifrados de extremo a extremo. Nadie fuera de este chat puede leerlos o escucharlos.", isTyping: "está escribiendo", typeMsg: "Escribe un mensaje...", scanToJoin: "Escanear para unirse", enterName: "Tu Nombre", unknownUser: "Usuario Desconocido", copied: "¡Enlace Copiado!", invalidCode: "Ingrese un código de 7 caracteres.", connecting: "Conectando...", waitingHost: "Identidad enviada, esperando al anfitrión...", unreachable: "No se puede llegar al nodo.", disconnected: "desconectado.", rejected: "Conexión Rechazada.", panicMode: "Modo Pánico: ¡Sesión Destruida!", legalTitle: "Aviso Legal y Responsabilidad", legalText: "Este software se proporciona 'tal cual' sin garantía de ningún tipo. El desarrollador no asume ninguna responsabilidad por el mal uso, actividades ilegales o pérdida de datos. Al utilizar esta herramienta, acepta la total responsabilidad de sus acciones y el cumplimiento de las leyes locales.", closeBtn: "Cerrar", sasLabel: "Código de seguridad (debe coincidir en ambas pantallas)", securing: "Protegiendo el canal…", verifyHint: "Compara este código con la pantalla del otro dispositivo.", verifyYes: "Coincide", verifyNo: "No coincide", verifyBad: "El código no coincide — sesión destruida. Alguien podría estar interceptando.", verified: "Verificado", expired: "La sala expiró o se cerró.", gapWarn: "Falta un mensaje: alguien podría estar descartándolos.", verifyFirst: "Verifica primero el código de seguridad.", strictLabel: "Bloquear mensajes hasta verificar el código de seguridad", advanced: "Avanzado", brokerHint: "Tu propio broker MQTT (wss://). El invitado debe usar el mismo.", invalidBroker: "Dirección de broker no válida." },
-            fr: { appDesc: "Communication P2P rapide et sécurisée.", createNode: "Créer un nœud sécurisé", orJoin: "OU REJOINDRE PAR CODE", connectBtn: "Connecter l'appareil", nodeActive: "Nœud actif", nodeDesc: "Scannez le QR ou partagez le lien avec l'appareil invité.", sessionCode: "Code de session", copyLink: "Copier le lien", waitingConn: "En attente de connexion entrante...", wantsToConnect: "veut se connecter.", identityReq: "Vérification d'identité requise.", deny: "Refuser", accept: "Accepter", endSession: "Terminer la session", exit: "Quitter", e2eMsg: "🔒 Les messages sont chiffrés de bout en bout. Personne en dehors de cette discussion ne peut les lire ou les écouter.", isTyping: "écrit", typeMsg: "Tapez un message...", scanToJoin: "Scanner pour rejoindre", enterName: "Votre Nom", unknownUser: "Utilisateur Inconnu", copied: "Lien copié !", invalidCode: "Entrez un code à 7 caractères.", connecting: "Connexion...", waitingHost: "Identité envoyée, en attente de l'hôte...", unreachable: "Impossible d'atteindre le nœud.", disconnected: "déconnecté.", rejected: "Connexion Rejetée.", panicMode: "Mode Panique : Session Détruite!", legalTitle: "Avis Légal et Clause de Non-responsabilité", legalText: "Ce logiciel est fourni 'tel quel' sans aucune garantie. Le développeur n'assume aucune responsabilité en cas de mauvaise utilisation, d'activités illégales ou de perte de données. En utilisant cet outil, vous acceptez l'entière responsabilité de vos actes et du respect des lois locales.", closeBtn: "Fermer", sasLabel: "Code de sécurité (identique sur les deux écrans)", securing: "Sécurisation du canal…", verifyHint: "Comparez ce code avec l'écran de l'autre appareil.", verifyYes: "Identique", verifyNo: "Différent", verifyBad: "Code différent — session détruite. Quelqu'un intercepte peut-être.", verified: "Vérifié", expired: "Salle expirée ou fermée.", gapWarn: "Message manquant : quelqu'un supprime peut-être des messages.", verifyFirst: "Vérifiez d'abord le code de sécurité.", strictLabel: "Bloquer les messages tant que le code n'est pas vérifié", advanced: "Avancé", brokerHint: "Votre propre broker MQTT (wss://). L'invité doit utiliser le même.", invalidBroker: "Adresse du broker invalide." },
-            de: { appDesc: "Schnelle & sichere P2P-Kommunikation.", createNode: "Sicheren Knoten erstellen", orJoin: "ODER PER CODE BEITRETEN", connectBtn: "Gerät verbinden", nodeActive: "Knoten aktiv", nodeDesc: "QR scannen oder Link mit dem Gastgerät teilen.", sessionCode: "Sitzungscode", copyLink: "Link kopieren", waitingConn: "Warten auf eingehende Verbindung...", wantsToConnect: "möchte sich verbinden.", identityReq: "Identitätsprüfung erforderlich.", deny: "Ablehnen", accept: "Akzeptieren", endSession: "Sitzung beenden", exit: "Verlassen", e2eMsg: "🔒 Nachrichten sind Ende-zu-Ende-verschlüsselt. Niemand außerhalb dieses Chats kann sie lesen oder abhören.", isTyping: "schreibt", typeMsg: "Schreibe eine Nachricht...", scanToJoin: "Zum Beitreten scannen", enterName: "Dein Name", unknownUser: "Unbekannter Benutzer", copied: "Link kopiert!", invalidCode: "Geben Sie einen 7-stelligen Code ein.", connecting: "Verbinde...", waitingHost: "Identität gesendet, warte auf Host...", unreachable: "Knoten nicht erreichbar.", disconnected: "getrennt.", rejected: "Verbindung abgelehnt.", panicMode: "Panikmodus: Sitzung zerstört!", legalTitle: "Haftungsausschluss", legalText: "Diese Software wird 'wie besehen' ohne jegliche Garantie bereitgestellt. Der Entwickler übernimmt keine Verantwortung oder Haftung für Missbrauch, illegale Aktivitäten oder Datenverlust. Durch die Nutzung dieses Tools übernehmen Sie die volle Verantwortung für Ihre Handlungen.", closeBtn: "Schließen", sasLabel: "Sicherheitscode (muss auf beiden Displays gleich sein)", securing: "Kanal wird gesichert…", verifyHint: "Vergleiche diesen Code mit dem Display des anderen Geräts.", verifyYes: "Stimmt", verifyNo: "Stimmt nicht", verifyBad: "Code stimmt nicht — Sitzung zerstört. Möglicherweise wird mitgelesen.", verified: "Verifiziert", expired: "Raum abgelaufen oder geschlossen.", gapWarn: "Nachricht fehlt — möglicherweise werden Nachrichten unterdrückt.", verifyFirst: "Zuerst den Sicherheitscode prüfen.", strictLabel: "Nachrichten sperren, bis der Sicherheitscode geprüft ist", advanced: "Erweitert", brokerHint: "Eigener MQTT-Broker (wss://). Der Gast muss denselben nutzen.", invalidBroker: "Ungültige Broker-Adresse." },
-            ar: { appDesc: "اتصال P2P سريع وآمن.", createNode: "إنشاء عقدة آمنة", orJoin: "أو الانضمام عبر الرمز", connectBtn: "توصيل الجهاز", nodeActive: "العقدة نشطة", nodeDesc: "امسح رمز الاستجابة السريعة أو شارك الرابط مع الجهاز الضيف.", sessionCode: "رمز الجلسة", copyLink: "نسخ الرابط", waitingConn: "في انتظار الاتصال الوارد...", wantsToConnect: "يريد الاتصال.", identityReq: "مطلوب التحقق من الهوية.", deny: "رفض", accept: "قبول", endSession: "إنهاء الجلسة", exit: "خروج", e2eMsg: "🔒 الرسائل مشفرة من البداية إلى النهاية. لا يمكن لأحد خارج هذه المحادثة قراءتها أو الاستماع إليها.", isTyping: "يكتب", typeMsg: "اكتب رسالة...", scanToJoin: "امسح للانضمام", enterName: "اسمك", unknownUser: "مستخدم غير معروف", copied: "تم نسخ الرابط!", invalidCode: "أدخل الرمز المكون من 7 أحرف.", connecting: "جارٍ الاتصال...", waitingHost: "تم إرسال الهوية، في انتظار المضيف...", unreachable: "لا يمكن الوصول إلى العقدة.", disconnected: "غادر.", rejected: "تم رفض الاتصال.", panicMode: "وضع الذعر: تم تدمير الجلسة!", legalTitle: "إخلاء المسؤولية القانونية", legalText: "يتم توفير هذا البرنامج 'كما هو' دون ضمان من أي نوع. لا يتحمل المطور أي مسؤولية عن أي سوء استخدام أو أنشطة غير قانونية أو فقدان للبيانات. باستخدام هذه الأداة، فإنك تتحمل المسؤولية الكاملة عن أفعالك والامتثال للقوانين المحلية.", closeBtn: "إغلاق", sasLabel: "رمز الأمان (يجب أن يتطابق على الشاشتين)", securing: "جارٍ تأمين القناة…", verifyHint: "قارن هذا الرمز بشاشة الجهاز الآخر.", verifyYes: "متطابق", verifyNo: "غير متطابق", verifyBad: "الرمز غير متطابق — تم تدمير الجلسة. قد يكون هناك من يعترض.", verified: "تم التحقق", expired: "انتهت صلاحية الغرفة أو أُغلقت.", gapWarn: "رسالة مفقودة — قد يكون أحدهم يحذف الرسائل.", verifyFirst: "تحقق من رمز الأمان أولاً.", strictLabel: "منع المراسلة حتى يتم التحقق من رمز الأمان", advanced: "متقدم", brokerHint: "وسيط MQTT الخاص بك (wss://). يجب أن يستخدمه الضيف أيضاً.", invalidBroker: "عنوان الوسيط غير صالح." },
-            ru: { appDesc: "Быстрая и безопасная P2P связь.", createNode: "Создать безопасный узел", orJoin: "ИЛИ ПРИСОЕДИНИТЕСЬ ПО КОДУ", connectBtn: "Подключить устройство", nodeActive: "Узел активен", nodeDesc: "Отсканируйте QR или поделитесь ссылкой с гостевым устройством.", sessionCode: "Код сеанса", copyLink: "Копировать ссылку", waitingConn: "Ожидание входящего подключения...", wantsToConnect: "хочет подключиться.", identityReq: "Требуется проверка личности.", deny: "Отклонить", accept: "Принять", endSession: "Завершить сеанс", exit: "Выход", e2eMsg: "🔒 Сообщения защищены сквозным шифрованием. Никто за пределами этого чата не сможет их прочитать.", isTyping: "печатает", typeMsg: "Введите сообщение...", scanToJoin: "Сканировать для входа", enterName: "Ваше имя", unknownUser: "Неизвестный пользователь", copied: "Ссылка скопирована!", invalidCode: "Введите 7-значный код.", connecting: "Подключение...", waitingHost: "Запрос отправлен, ожидание...", unreachable: "Узел недоступен.", disconnected: "отключился.", rejected: "В соединении отказано.", panicMode: "Режим паники: сеанс уничтожен!", legalTitle: "Отказ от ответственности", legalText: "Это программное обеспечение предоставляется «как есть» без каких-либо гарантий. Разработчик не несет ответственности за любое неправильное использование, незаконную деятельность или потерю данных. Используя этот инструмент, вы берете на себя полную ответственность за свои действия.", closeBtn: "Закрыть", sasLabel: "Код безопасности (должен совпадать на обоих экранах)", securing: "Защита канала…", verifyHint: "Сравните этот код с экраном другого устройства.", verifyYes: "Совпадает", verifyNo: "Не совпадает", verifyBad: "Код не совпал — сеанс уничтожен. Возможно, вас перехватывают.", verified: "Проверено", expired: "Комната истекла или закрыта.", gapWarn: "Пропущено сообщение — возможно, кто-то их удаляет.", verifyFirst: "Сначала проверьте код безопасности.", strictLabel: "Блокировать сообщения до проверки кода безопасности", advanced: "Дополнительно", brokerHint: "Свой MQTT-брокер (wss://). Гость должен использовать тот же.", invalidBroker: "Неверный адрес брокера." }
+            en: { appDesc: "Zero-trust, end-to-end encrypted P2P terminal. Leaves no trace.", createNode: "Create Secure Node", orJoin: "OR JOIN VIA CODE", connectBtn: "Connect Device", nodeActive: "Node Active", nodeDesc: "Scan QR or share the link with the guest device.", sessionCode: "Session Code", copyLink: "Copy Link", waitingConn: "Waiting for incoming connection...", wantsToConnect: "wants to connect.", identityReq: "Identity verification required.", deny: "Deny", accept: "Accept", endSession: "End Session", exit: "Exit", e2eMsg: "🔒 Messages are end-to-end encrypted. No one outside of this chat can read or listen to them.", isTyping: "is typing", typeMsg: "Type a message...", scanToJoin: "Scan QR to Join", enterName: "Your Name", unknownUser: "Unknown User", copied: "Link Copied!", invalidCode: "Enter 7-character code.", connecting: "Connecting...", waitingHost: "Identity sent, waiting for host...", unreachable: "Cannot reach node.", disconnected: "disconnected.", rejected: "Connection Rejected.", panicMode: "Panic Mode: Session Destroyed!", legalTitle: "Legal & Disclaimer", legalText: "This software is provided 'as is' without warranty of any kind. The developer assumes no responsibility or liability for any misuse, illegal activities, or data loss. By using this tool, you accept full responsibility for your actions and compliance with local laws.", closeBtn: "Close", sasLabel: "Security code (must match on both screens)", securing: "Securing channel…", verifyHint: "Compare this code with the other device's screen.", verifyYes: "Match", verifyNo: "Mismatch", verifyBad: "Security code mismatch — session destroyed. Someone may be intercepting.", verified: "Verified", expired: "Room expired or closed.", gapWarn: "Message missing — someone may be dropping messages.", verifyFirst: "Verify the security code first.", strictLabel: "Block messaging until security code is verified", advanced: "Advanced", brokerHint: "Own MQTT broker (wss://). Guest must use the same.", invalidBroker: "Invalid broker address.", peerGone: "Peer connection lost — session destroyed.", welcome: "Welcome to Spectre 👻", remoteWipe: "The other side destroyed the session. Chat wiped.", wipedLock: "Screen locked — chat destroyed.", lockWipeLabel: "Destroy chat instantly when the screen locks or the app leaves the foreground" },
+            tr: { appDesc: "Sıfır güvenli, uçtan uca şifreli P2P terminal. İz bırakmaz.", createNode: "Güvenli Oda Kur", orJoin: "VEYA KOD İLE KATIL", connectBtn: "Cihaza Bağlan", nodeActive: "Oda Aktif", nodeDesc: "QR kodu okutun veya misafir cihazla linki paylaşın.", sessionCode: "Bağlantı Kodu", copyLink: "Linki Kopyala", waitingConn: "Gelen bağlantı bekleniyor...", wantsToConnect: "bağlanmak istiyor.", identityReq: "Kimlik doğrulaması gerekiyor.", deny: "Reddet", accept: "Kabul Et", endSession: "Oturumu Sonlandır", exit: "Çıkış", e2eMsg: "🔒 Mesajlar uçtan uca şifrelidir. Bu sohbetin dışındaki hiç kimse onları okuyamaz veya dinleyemez.", isTyping: "yazıyor", typeMsg: "Bir mesaj yazın...", scanToJoin: "Katılmak İçin Okut", enterName: "İsminiz", unknownUser: "Bilinmeyen Kullanıcı", copied: "Link Kopyalandı!", invalidCode: "7 haneli kodu girin.", connecting: "Bağlanılıyor...", waitingHost: "İstek gönderildi, onay bekleniyor...", unreachable: "Sunucuya ulaşılamadı.", disconnected: "ayrıldı.", rejected: "Bağlantı Reddedildi.", panicMode: "Panik Modu: Oturum İmha Edildi!", legalTitle: "Yasal Uyarı & Sorumluluk Reddi", legalText: "Bu yazılım hiçbir garanti verilmeksizin 'olduğu gibi' sunulmaktadır. Geliştirici; yasadışı kullanım, veri kaybı veya doğabilecek zararlardan sorumlu tutulamaz. Bu aracı kullanarak, eylemlerinizin yerel yasalara uygunluğundan tamamen kendinizin sorumlu olduğunu kabul edersiniz.", closeBtn: "Kapat", sasLabel: "Güvenlik kodu (iki ekranda aynı olmalı)", securing: "Kanal güvenliği sağlanıyor…", verifyHint: "Bu kodu karşı cihazın ekranıyla karşılaştırın.", verifyYes: "Eşleşiyor", verifyNo: "Eşleşmiyor", verifyBad: "Güvenlik kodu uyuşmadı — oturum yok edildi. Biri araya girmiş olabilir.", verified: "Doğrulandı", expired: "Oda süresi doldu veya kapandı.", gapWarn: "Mesaj eksik — biri mesajları düşürüyor olabilir.", verifyFirst: "Önce güvenlik kodunu doğrulayın.", strictLabel: "Güvenlik kodu doğrulanana kadar mesajlaşmayı engelle", advanced: "Gelişmiş", brokerHint: "Kendi MQTT broker'ınız (wss://). Misafir de aynısını kullanmalı.", invalidBroker: "Geçersiz broker adresi.", peerGone: "Karşı tarafla bağlantı koptu — oturum yok edildi.", welcome: "Spectre'e hoş geldin 👻", remoteWipe: "Karşı taraf oturumu yok etti. Sohbet silindi.", wipedLock: "Ekran kilitlendi — sohbet yok edildi.", lockWipeLabel: "Ekran kilitlenince veya uygulama arka plana geçince sohbeti anında yok et" },
+            es: { appDesc: "Terminal P2P de confianza cero con cifrado de extremo a extremo. No deja rastro.", createNode: "Crear Nodo Seguro", orJoin: "O ÚNETE VÍA CÓDIGO", connectBtn: "Conectar Dispositivo", nodeActive: "Nodo Activo", nodeDesc: "Escanea el QR o comparte el enlace con el dispositivo invitado.", sessionCode: "Código de Sesión", copyLink: "Copiar Enlace", waitingConn: "Esperando conexión entrante...", wantsToConnect: "quiere conectarse.", identityReq: "Se requiere verificación de identidad.", deny: "Rechazar", accept: "Aceptar", endSession: "Finalizar Sesión", exit: "Salir", e2eMsg: "🔒 Los mensajes están cifrados de extremo a extremo. Nadie fuera de este chat puede leerlos o escucharlos.", isTyping: "está escribiendo", typeMsg: "Escribe un mensaje...", scanToJoin: "Escanear para unirse", enterName: "Tu Nombre", unknownUser: "Usuario Desconocido", copied: "¡Enlace Copiado!", invalidCode: "Ingrese un código de 7 caracteres.", connecting: "Conectando...", waitingHost: "Identidad enviada, esperando al anfitrión...", unreachable: "No se puede llegar al nodo.", disconnected: "desconectado.", rejected: "Conexión Rechazada.", panicMode: "Modo Pánico: ¡Sesión Destruida!", legalTitle: "Aviso Legal y Responsabilidad", legalText: "Este software se proporciona 'tal cual' sin garantía de ningún tipo. El desarrollador no asume ninguna responsabilidad por el mal uso, actividades ilegales o pérdida de datos. Al utilizar esta herramienta, acepta la total responsabilidad de sus acciones y el cumplimiento de las leyes locales.", closeBtn: "Cerrar", sasLabel: "Código de seguridad (debe coincidir en ambas pantallas)", securing: "Protegiendo el canal…", verifyHint: "Compara este código con la pantalla del otro dispositivo.", verifyYes: "Coincide", verifyNo: "No coincide", verifyBad: "El código no coincide — sesión destruida. Alguien podría estar interceptando.", verified: "Verificado", expired: "La sala expiró o se cerró.", gapWarn: "Falta un mensaje: alguien podría estar descartándolos.", verifyFirst: "Verifica primero el código de seguridad.", strictLabel: "Bloquear mensajes hasta verificar el código de seguridad", advanced: "Avanzado", brokerHint: "Tu propio broker MQTT (wss://). El invitado debe usar el mismo.", invalidBroker: "Dirección de broker no válida.", peerGone: "Conexión con el otro lado perdida — sesión destruida.", welcome: "Bienvenido a Spectre 👻", remoteWipe: "La otra parte destruyó la sesión. Chat borrado.", wipedLock: "Pantalla bloqueada — chat destruido.", lockWipeLabel: "Destruir el chat al instante al bloquear la pantalla o salir de la app" },
+            fr: { appDesc: "Terminal P2P zéro confiance, chiffré de bout en bout. Ne laisse aucune trace.", createNode: "Créer un nœud sécurisé", orJoin: "OU REJOINDRE PAR CODE", connectBtn: "Connecter l'appareil", nodeActive: "Nœud actif", nodeDesc: "Scannez le QR ou partagez le lien avec l'appareil invité.", sessionCode: "Code de session", copyLink: "Copier le lien", waitingConn: "En attente de connexion entrante...", wantsToConnect: "veut se connecter.", identityReq: "Vérification d'identité requise.", deny: "Refuser", accept: "Accepter", endSession: "Terminer la session", exit: "Quitter", e2eMsg: "🔒 Les messages sont chiffrés de bout en bout. Personne en dehors de cette discussion ne peut les lire ou les écouter.", isTyping: "écrit", typeMsg: "Tapez un message...", scanToJoin: "Scanner pour rejoindre", enterName: "Votre Nom", unknownUser: "Utilisateur Inconnu", copied: "Lien copié !", invalidCode: "Entrez un code à 7 caractères.", connecting: "Connexion...", waitingHost: "Identité envoyée, en attente de l'hôte...", unreachable: "Impossible d'atteindre le nœud.", disconnected: "déconnecté.", rejected: "Connexion Rejetée.", panicMode: "Mode Panique : Session Détruite!", legalTitle: "Avis Légal et Clause de Non-responsabilité", legalText: "Ce logiciel est fourni 'tel quel' sans aucune garantie. Le développeur n'assume aucune responsabilité en cas de mauvaise utilisation, d'activités illégales ou de perte de données. En utilisant cet outil, vous acceptez l'entière responsabilité de vos actes et du respect des lois locales.", closeBtn: "Fermer", sasLabel: "Code de sécurité (identique sur les deux écrans)", securing: "Sécurisation du canal…", verifyHint: "Comparez ce code avec l'écran de l'autre appareil.", verifyYes: "Identique", verifyNo: "Différent", verifyBad: "Code différent — session détruite. Quelqu'un intercepte peut-être.", verified: "Vérifié", expired: "Salle expirée ou fermée.", gapWarn: "Message manquant : quelqu'un supprime peut-être des messages.", verifyFirst: "Vérifiez d'abord le code de sécurité.", strictLabel: "Bloquer les messages tant que le code n'est pas vérifié", advanced: "Avancé", brokerHint: "Votre propre broker MQTT (wss://). L'invité doit utiliser le même.", invalidBroker: "Adresse du broker invalide.", peerGone: "Connexion avec l'autre partie perdue — session détruite.", welcome: "Bienvenue sur Spectre 👻", remoteWipe: "L'autre partie a détruit la session. Discussion effacée.", wipedLock: "Écran verrouillé — discussion détruite.", lockWipeLabel: "Détruire la discussion dès le verrouillage de l'écran ou la mise en arrière-plan" },
+            de: { appDesc: "Zero-Trust-P2P-Terminal mit Ende-zu-Ende-Verschlüsselung. Hinterlässt keine Spuren.", createNode: "Sicheren Knoten erstellen", orJoin: "ODER PER CODE BEITRETEN", connectBtn: "Gerät verbinden", nodeActive: "Knoten aktiv", nodeDesc: "QR scannen oder Link mit dem Gastgerät teilen.", sessionCode: "Sitzungscode", copyLink: "Link kopieren", waitingConn: "Warten auf eingehende Verbindung...", wantsToConnect: "möchte sich verbinden.", identityReq: "Identitätsprüfung erforderlich.", deny: "Ablehnen", accept: "Akzeptieren", endSession: "Sitzung beenden", exit: "Verlassen", e2eMsg: "🔒 Nachrichten sind Ende-zu-Ende-verschlüsselt. Niemand außerhalb dieses Chats kann sie lesen oder abhören.", isTyping: "schreibt", typeMsg: "Schreibe eine Nachricht...", scanToJoin: "Zum Beitreten scannen", enterName: "Dein Name", unknownUser: "Unbekannter Benutzer", copied: "Link kopiert!", invalidCode: "Geben Sie einen 7-stelligen Code ein.", connecting: "Verbinde...", waitingHost: "Identität gesendet, warte auf Host...", unreachable: "Knoten nicht erreichbar.", disconnected: "getrennt.", rejected: "Verbindung abgelehnt.", panicMode: "Panikmodus: Sitzung zerstört!", legalTitle: "Haftungsausschluss", legalText: "Diese Software wird 'wie besehen' ohne jegliche Garantie bereitgestellt. Der Entwickler übernimmt keine Verantwortung oder Haftung für Missbrauch, illegale Aktivitäten oder Datenverlust. Durch die Nutzung dieses Tools übernehmen Sie die volle Verantwortung für Ihre Handlungen.", closeBtn: "Schließen", sasLabel: "Sicherheitscode (muss auf beiden Displays gleich sein)", securing: "Kanal wird gesichert…", verifyHint: "Vergleiche diesen Code mit dem Display des anderen Geräts.", verifyYes: "Stimmt", verifyNo: "Stimmt nicht", verifyBad: "Code stimmt nicht — Sitzung zerstört. Möglicherweise wird mitgelesen.", verified: "Verifiziert", expired: "Raum abgelaufen oder geschlossen.", gapWarn: "Nachricht fehlt — möglicherweise werden Nachrichten unterdrückt.", verifyFirst: "Zuerst den Sicherheitscode prüfen.", strictLabel: "Nachrichten sperren, bis der Sicherheitscode geprüft ist", advanced: "Erweitert", brokerHint: "Eigener MQTT-Broker (wss://). Der Gast muss denselben nutzen.", invalidBroker: "Ungültige Broker-Adresse.", peerGone: "Verbindung zur Gegenseite verloren — Sitzung zerstört.", welcome: "Willkommen bei Spectre 👻", remoteWipe: "Die Gegenseite hat die Sitzung zerstört. Chat gelöscht.", wipedLock: "Bildschirm gesperrt — Chat zerstört.", lockWipeLabel: "Chat sofort zerstören, wenn der Bildschirm gesperrt wird oder die App in den Hintergrund geht" },
+            ar: { appDesc: "محطة P2P بلا ثقة ومشفرة من طرف إلى طرف. لا تترك أثراً.", createNode: "إنشاء عقدة آمنة", orJoin: "أو الانضمام عبر الرمز", connectBtn: "توصيل الجهاز", nodeActive: "العقدة نشطة", nodeDesc: "امسح رمز الاستجابة السريعة أو شارك الرابط مع الجهاز الضيف.", sessionCode: "رمز الجلسة", copyLink: "نسخ الرابط", waitingConn: "في انتظار الاتصال الوارد...", wantsToConnect: "يريد الاتصال.", identityReq: "مطلوب التحقق من الهوية.", deny: "رفض", accept: "قبول", endSession: "إنهاء الجلسة", exit: "خروج", e2eMsg: "🔒 الرسائل مشفرة من البداية إلى النهاية. لا يمكن لأحد خارج هذه المحادثة قراءتها أو الاستماع إليها.", isTyping: "يكتب", typeMsg: "اكتب رسالة...", scanToJoin: "امسح للانضمام", enterName: "اسمك", unknownUser: "مستخدم غير معروف", copied: "تم نسخ الرابط!", invalidCode: "أدخل الرمز المكون من 7 أحرف.", connecting: "جارٍ الاتصال...", waitingHost: "تم إرسال الهوية، في انتظار المضيف...", unreachable: "لا يمكن الوصول إلى العقدة.", disconnected: "غادر.", rejected: "تم رفض الاتصال.", panicMode: "وضع الذعر: تم تدمير الجلسة!", legalTitle: "إخلاء المسؤولية القانونية", legalText: "يتم توفير هذا البرنامج 'كما هو' دون ضمان من أي نوع. لا يتحمل المطور أي مسؤولية عن أي سوء استخدام أو أنشطة غير قانونية أو فقدان للبيانات. باستخدام هذه الأداة، فإنك تتحمل المسؤولية الكاملة عن أفعالك والامتثال للقوانين المحلية.", closeBtn: "إغلاق", sasLabel: "رمز الأمان (يجب أن يتطابق على الشاشتين)", securing: "جارٍ تأمين القناة…", verifyHint: "قارن هذا الرمز بشاشة الجهاز الآخر.", verifyYes: "متطابق", verifyNo: "غير متطابق", verifyBad: "الرمز غير متطابق — تم تدمير الجلسة. قد يكون هناك من يعترض.", verified: "تم التحقق", expired: "انتهت صلاحية الغرفة أو أُغلقت.", gapWarn: "رسالة مفقودة — قد يكون أحدهم يحذف الرسائل.", verifyFirst: "تحقق من رمز الأمان أولاً.", strictLabel: "منع المراسلة حتى يتم التحقق من رمز الأمان", advanced: "متقدم", brokerHint: "وسيط MQTT الخاص بك (wss://). يجب أن يستخدمه الضيف أيضاً.", invalidBroker: "عنوان الوسيط غير صالح.", peerGone: "انقطع الاتصال بالطرف الآخر — دُمّرت الجلسة.", welcome: "مرحباً بك في Spectre 👻", remoteWipe: "دمّر الطرف الآخر الجلسة. تم مسح الدردشة.", wipedLock: "تم قفل الشاشة — دُمّرت الدردشة.", lockWipeLabel: "تدمير الدردشة فوراً عند قفل الشاشة أو مغادرة التطبيق" },
+            ru: { appDesc: "P2P-терминал с нулевым доверием и сквозным шифрованием. Не оставляет следов.", createNode: "Создать безопасный узел", orJoin: "ИЛИ ПРИСОЕДИНИТЕСЬ ПО КОДУ", connectBtn: "Подключить устройство", nodeActive: "Узел активен", nodeDesc: "Отсканируйте QR или поделитесь ссылкой с гостевым устройством.", sessionCode: "Код сеанса", copyLink: "Копировать ссылку", waitingConn: "Ожидание входящего подключения...", wantsToConnect: "хочет подключиться.", identityReq: "Требуется проверка личности.", deny: "Отклонить", accept: "Принять", endSession: "Завершить сеанс", exit: "Выход", e2eMsg: "🔒 Сообщения защищены сквозным шифрованием. Никто за пределами этого чата не сможет их прочитать.", isTyping: "печатает", typeMsg: "Введите сообщение...", scanToJoin: "Сканировать для входа", enterName: "Ваше имя", unknownUser: "Неизвестный пользователь", copied: "Ссылка скопирована!", invalidCode: "Введите 7-значный код.", connecting: "Подключение...", waitingHost: "Запрос отправлен, ожидание...", unreachable: "Узел недоступен.", disconnected: "отключился.", rejected: "В соединении отказано.", panicMode: "Режим паники: сеанс уничтожен!", legalTitle: "Отказ от ответственности", legalText: "Это программное обеспечение предоставляется «как есть» без каких-либо гарантий. Разработчик не несет ответственности за любое неправильное использование, незаконную деятельность или потерю данных. Используя этот инструмент, вы берете на себя полную ответственность за свои действия.", closeBtn: "Закрыть", sasLabel: "Код безопасности (должен совпадать на обоих экранах)", securing: "Защита канала…", verifyHint: "Сравните этот код с экраном другого устройства.", verifyYes: "Совпадает", verifyNo: "Не совпадает", verifyBad: "Код не совпал — сеанс уничтожен. Возможно, вас перехватывают.", verified: "Проверено", expired: "Комната истекла или закрыта.", gapWarn: "Пропущено сообщение — возможно, кто-то их удаляет.", verifyFirst: "Сначала проверьте код безопасности.", strictLabel: "Блокировать сообщения до проверки кода безопасности", advanced: "Дополнительно", brokerHint: "Свой MQTT-брокер (wss://). Гость должен использовать тот же.", invalidBroker: "Неверный адрес брокера.", peerGone: "Связь с собеседником потеряна — сеанс уничтожен.", welcome: "Добро пожаловать в Spectre 👻", remoteWipe: "Другая сторона уничтожила сеанс. Чат стёрт.", wipedLock: "Экран заблокирован — чат уничтожен.", lockWipeLabel: "Мгновенно уничтожать чат при блокировке экрана или сворачивании приложения" }
         };
         let currentLang = localStorage.getItem('nexus_lang') || 'en';
 
@@ -370,15 +373,32 @@
             if (p && AppState.mqtt) AppState.mqtt.publish(`qsys/${AppState.topic}`, JSON.stringify({ payload: p }), { qos: 0 });
         }
         // Best-effort "leave", then hard-sever the WebSocket (Panic Mode / exit).
-        function sendLeave() {
+        function sendLeave(kind = 'leave') {
             const mq = AppState.mqtt, tp = AppState.topic, k = chatKey || cryptoKey, id = AppState.clientId;
             if (!mq) return;
             AppState.mqtt = null;
-            const done = () => { try { mq.end(true); } catch (e) {} };
+            let ended = false; const done = () => { if (ended) return; ended = true; try { mq.end(true); } catch (e) {} };
             if (!k || !tp) return done();
-            encryptWith(k, JSON.stringify({ type: 'leave', senderId: id }))
-                .then(p => p ? mq.publish(`qsys/${tp}`, JSON.stringify({ payload: p }), { qos: 0 }, done) : done()).catch(done);
+            // panic: QoS1 + retained -> a peer that is offline/backgrounded still gets the wipe order when it resubscribes
+            const opts = kind === 'panic' ? { qos: 1, retain: true } : { qos: 0 };
+            setTimeout(done, 2000);
+            encryptWith(k, JSON.stringify({ type: kind, senderId: id }))
+                .then(p => p ? mq.publish(`qsys/${tp}`, JSON.stringify({ payload: p }), opts, done) : done()).catch(done);
         }
+        async function sendAck(d) { // host -> guest, before approval: lets the guest compute and SEE the same security code
+            const p = AppState.pending; if (!p) return;
+            await sysPublish({ type: 'join_ack', senderId: AppState.clientId, targetId: d.senderId, nonce: d.nonce, pub: b64e(p.hostPub) }, cryptoKey);
+        }
+        async function handleAck(d) { // guest
+            try {
+                if (AppState.ackPub || !AppState.kp || d.nonce !== AppState.nonce || typeof d.pub !== 'string') return;
+                const hostPub = b64d(d.pub); if (!validPub(hostPub)) return;
+                AppState.ackPub = d.pub; AppState.sas = await sasOf(hostPub, AppState.guestPub);
+                document.getElementById('guest-sas').textContent = AppState.sas;
+                document.getElementById('guest-wait').classList.remove('hidden');
+            } catch (e) {}
+        }
+        function fromPeer(d) { return AppState.isChatActive ? d.senderId === AppState.peerId : (!!AppState.guestWaitingId && d.senderId === AppState.guestWaitingId); }
         window.addEventListener('pagehide', () => sendLeave());
 
         // ---- Per-session ECDH (P-256) + HKDF: forward secrecy, and approval is now cryptographically binding.
@@ -393,11 +413,11 @@
             const d = String(Math.abs(n) % 1e10).padStart(10, '0');
             return d.slice(0, 5) + ' ' + d.slice(5);
         }
-        async function sessionKey(priv, peerRaw, hostPub, guestPub) {
+        async function sessionKey(priv, peerRaw, hostPub, guestPub, secret) {
             const peer = await crypto.subtle.importKey('raw', peerRaw, ECDH, false, []);
             const shared = await crypto.subtle.deriveBits({ name: 'ECDH', public: peer }, priv, 256);
             const km = await crypto.subtle.importKey('raw', shared, 'HKDF', false, ['deriveKey']);
-            return crypto.subtle.deriveKey({ name: 'HKDF', hash: 'SHA-256', salt: _enc.encode('nexus-v2-chat|' + AppState.sessionId), info: cat(hostPub, guestPub) },
+            return crypto.subtle.deriveKey({ name: 'HKDF', hash: 'SHA-256', salt: cat(_enc.encode('nexus-v2-chat|' + AppState.sessionId), secret), info: cat(hostPub, guestPub) },
                 km, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']);
         }
         function setVerified(ok) {
@@ -416,7 +436,7 @@
                 document.getElementById('verify-strip').classList.add('hidden'); setVerified(true); showToast(i18n[currentLang].verified);
             });
             document.getElementById('btn-verify-no').addEventListener('click', () => {
-                showToast(i18n[currentLang].verifyBad, true); sendLeave(); resetApp();
+                showToast(i18n[currentLang].verifyBad, true); sendLeave('panic'); resetApp();
             });
         });
         const seenMids = new Set();
@@ -429,6 +449,7 @@
             const exp = (AppState.rxSeq || 0) + 1;
             if (typeof p.n !== 'number' || p.n < exp) return null;       // stale / replay
             if (seenMids.has(p.mid)) return null;
+            AppState.lastPeer = Date.now();
             if (p.n > exp) showToast(i18n[currentLang].gapWarn, true);   // message(s) were dropped
             AppState.rxSeq = p.n;
             seenMids.add(p.mid); if (seenMids.size > 5000) seenMids.delete(seenMids.values().next().value);
@@ -463,7 +484,7 @@
             if (localStorage.getItem('nexus_strict') !== '0' && !AppState.verified) { showToast(i18n[currentLang].verifyFirst, true); return false; }
             return true;
         }
-        function clearTimers() { clearTimeout(AppState.roomTimer); clearTimeout(AppState.joinTimer); clearTimeout(AppState.promptTimer); }
+        function clearTimers() { clearTimeout(AppState.roomTimer); clearTimeout(AppState.joinTimer); clearTimeout(AppState.promptTimer); clearInterval(AppState.hbTimer); }
         function rejectGuest() {
             clearTimeout(AppState.promptTimer);
             sysPublish({ type: 'join_response', senderId: AppState.clientId, targetId: AppState.guestWaitingId, status: 'rejected' });
@@ -473,6 +494,7 @@
             AppState.blockUntil = Date.now() + 15000 * AppState.rejects; // back-off against prompt spam
         }
         document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('btn-guest-cancel').addEventListener('click', () => resetApp());
             [['input-chat', 'off'], ['input-my-name', 'off'], ['input-join-code', 'characters'], ['input-broker', 'off']].forEach(([id, cap]) => {
                 const e = document.getElementById(id); if (!e) return;
                 e.setAttribute('autocomplete', 'off'); e.setAttribute('autocorrect', 'off'); e.setAttribute('autocapitalize', cap); e.setAttribute('spellcheck', 'false');
@@ -483,16 +505,26 @@
             let hiddenAt = 0, hiddenTimer = null;
             document.addEventListener('visibilitychange', () => {
                 const cv = document.getElementById('privacy-cover');
-                const panic = () => { sendLeave(); resetApp(); cv.classList.add('hidden'); };
+                const panic = () => { sendLeave('panic'); resetApp(); };
                 if (document.hidden) {
                     if (!AppState.sessionId) return;
-                    hiddenAt = Date.now(); cv.classList.remove('hidden'); hiddenTimer = setTimeout(panic, 60000);
+                    cv.classList.remove('hidden');
+                    // no "screen locked" event exists on the web: hidden is the closest signal. File picker is exempted.
+                    if (localStorage.getItem('nexus_lockwipe') !== '0' && Date.now() >= (AppState.noWipeUntil || 0)) { panic(); AppState.lockWiped = true; return; }
+                    hiddenAt = Date.now(); hiddenTimer = setTimeout(panic, 60000);
                 } else {
                     clearTimeout(hiddenTimer); cv.classList.add('hidden');
-                    if (hiddenAt && AppState.sessionId && Date.now() - hiddenAt > 60000) panic(); // timers can be frozen in background
+                    if (AppState.lockWiped) { AppState.lockWiped = false; showToast(i18n[currentLang].wipedLock, true); }
+                    else if (hiddenAt && AppState.sessionId && Date.now() - hiddenAt > 60000) panic();
                     hiddenAt = 0;
                 }
             });
+            const lw = document.getElementById('lockwipe-toggle');
+            lw.checked = localStorage.getItem('nexus_lockwipe') !== '0';
+            lw.addEventListener('change', () => localStorage.setItem('nexus_lockwipe', lw.checked ? '1' : '0'));
+            const fi = document.getElementById('file-input');
+            document.getElementById('btn-attach').addEventListener('click', () => { AppState.noWipeUntil = Date.now() + 120000; });
+            ['change', 'cancel'].forEach(ev => fi.addEventListener(ev, () => { AppState.noWipeUntil = 0; }));
         });
         const validPub = p => p.length === 65 && p[0] === 4;
         async function sendJoinRequest() { // guest
@@ -507,7 +539,7 @@
                 const guestPub = b64d(d.pub); if (!validPub(guestPub)) return false;
                 const kp = await crypto.subtle.generateKey(ECDH, false, ['deriveBits']);
                 const hostPub = new Uint8Array(await crypto.subtle.exportKey('raw', kp.publicKey));
-                AppState.pending = { kp, hostPub, guestPub, nonce: d.nonce };
+                AppState.pending = { kp, hostPub, guestPub, nonce: d.nonce, secret: crypto.getRandomValues(new Uint8Array(32)) }; // secret released only on approval
                 AppState.sas = await sasOf(hostPub, guestPub);
                 document.getElementById('permission-sas').textContent = AppState.sas;
                 return true;
@@ -515,8 +547,8 @@
         }
         async function approveGuest() { // host
             clearTimeout(AppState.promptTimer); const p = AppState.pending; if (!p) return;
-            const key = await sessionKey(p.kp.privateKey, p.guestPub, p.hostPub, p.guestPub);
-            await sysPublish({ type: 'join_response', senderId: AppState.clientId, targetId: AppState.guestWaitingId, status: 'accepted', senderName: AppState.myName, pub: b64e(p.hostPub), nonce: p.nonce }, cryptoKey);
+            const key = await sessionKey(p.kp.privateKey, p.guestPub, p.hostPub, p.guestPub, p.secret);
+            await sysPublish({ type: 'join_response', senderId: AppState.clientId, targetId: AppState.guestWaitingId, status: 'accepted', senderName: AppState.myName, pub: b64e(p.hostPub), sec: b64e(p.secret), nonce: p.nonce }, cryptoKey);
             AppState.peerId = AppState.guestWaitingId; chatKey = key; AppState.pending = null;
             closeApprovalModal(); playSound('success'); startChat();
         }
@@ -524,7 +556,9 @@
             try {
                 if (!AppState.kp || d.nonce !== AppState.nonce || typeof d.pub !== 'string' || typeof d.senderId !== 'string' || d.senderId.length > 40) return false;
                 const hostPub = b64d(d.pub); if (!validPub(hostPub)) return false;
-                chatKey = await sessionKey(AppState.kp.privateKey, hostPub, hostPub, AppState.guestPub);
+                if (AppState.ackPub && AppState.ackPub !== d.pub) return false; // host key must equal the one shown in the ack
+                if (typeof d.sec !== 'string') return false; const sec = b64d(d.sec); if (sec.length !== 32) return false;
+                chatKey = await sessionKey(AppState.kp.privateKey, hostPub, hostPub, AppState.guestPub, sec);
                 AppState.sas = await sasOf(hostPub, AppState.guestPub); AppState.kp = null; AppState.peerId = d.senderId;
                 return true;
             } catch (e) { return false; }
@@ -568,7 +602,7 @@
             }
         }
         
-        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage))) {
             htmlEl.classList.add('dark'); iconMoon.classList.add('hidden'); iconSun.classList.remove('hidden');
         }
         btnTheme.addEventListener('click', toggleTheme);
@@ -683,6 +717,7 @@
                 if (!data || typeof data !== 'object') return;
             }
             if (data.senderId === AppState.clientId) return;
+            if (AppState.isChatActive && data.senderId === AppState.peerId) AppState.lastPeer = Date.now();
 
             const sysTopic = `qsys/${AppState.topic}`;
             const chatTopic = `qchat/${AppState.topic}`;
@@ -691,7 +726,7 @@
                 if (AppState.role === 'host' && data.type === 'join_request') {
                     if (AppState.isChatActive || AppState.guestWaitingId || Date.now() < (AppState.blockUntil || 0)) return;
                     if (!(await prepareHost(data))) return;
-                    AppState.guestWaitingId = data.senderId;
+                    AppState.guestWaitingId = data.senderId; sendAck(data).catch(() => {});
                     AppState.otherName = cleanName(data.senderName) || i18n[currentLang].unknownUser;
                     document.getElementById('permission-name').innerText = `${AppState.otherName} ${i18n[currentLang].wantsToConnect}`;
                     showApprovalModal(); playSound('msg'); clearTimeout(AppState.promptTimer); AppState.promptTimer = setTimeout(rejectGuest, 60000);
@@ -703,13 +738,14 @@
                         playSound('success'); startChat();
                     } else { showToast(i18n[currentLang].rejected, true); resetApp(); }
                 }
+                else if (AppState.role === 'guest' && data.type === 'join_ack' && data.targetId === AppState.clientId) { await handleAck(data); }
                 else if (data.type === 'typing') {
                     const ind = document.getElementById('typing-indicator');
                     document.getElementById('typing-name').innerText = AppState.otherName;
                     if (data.status === 'start') { ind.classList.remove('hidden'); ind.classList.add('flex'); scrollChatToBottom(); }
                     else { ind.classList.add('hidden'); ind.classList.remove('flex'); }
                 }
-                else if (data.type === 'leave') { showToast(`${AppState.otherName} ${i18n[currentLang].disconnected}`, true); resetApp(); }
+                else if ((data.type === 'leave' || data.type === 'panic') && fromPeer(data)) { showToast(data.type === 'panic' ? i18n[currentLang].remoteWipe : `${AppState.otherName} ${i18n[currentLang].disconnected}`, true); resetApp(); }
             }
             else if (topic === chatTopic && data.type === 'chat' && AppState.isChatActive) {
                 const p = await openChatMessage(data.payload);
@@ -747,7 +783,7 @@
             headerDiv.className = 'flex justify-between items-baseline mb-0.5 space-x-3 rtl:space-x-reverse';
 
             const nameSpan = document.createElement('span');
-            nameSpan.className = `text-[11px] font-bold opacity-90 ${senderType === 'me' ? 'text-teal-700 dark:text-teal-300' : 'text-blue-600 dark:text-blue-400'}`;
+            nameSpan.className = `text-[11px] font-bold opacity-90 ${senderType === 'me' ? 'text-violet-700 dark:text-violet-300' : 'text-blue-600 dark:text-blue-400'}`;
             nameSpan.textContent = senderName || (senderType === 'me' ? AppState.myName : AppState.otherName);
             
             const timeSpan = document.createElement('span');
@@ -792,7 +828,7 @@
             
             container.innerHTML = `
             <div class="text-center w-full my-2">
-                <span class="bg-[#ffeecd] dark:bg-[#182229] text-gray-700 dark:text-[#ffd279] text-xs px-3 py-1.5 rounded-lg shadow-sm inline-block max-w-xs leading-relaxed text-center" data-i18n="e2eMsg">
+                <span class="bg-[#ede9fe] dark:bg-[#1a1626] text-gray-700 dark:text-[#c4b5fd] text-xs px-3 py-1.5 rounded-lg shadow-sm inline-block max-w-xs leading-relaxed text-center" data-i18n="e2eMsg">
                     ${i18n[currentLang].e2eMsg}
                 </span>
             </div>` + tInd;
@@ -947,17 +983,17 @@
                ========================================= */
             let panicTapCount = 0;
             let panicTimer;
-            document.addEventListener('click', (e) => {
+            document.addEventListener('pointerdown', (e) => {
                 const isLegalModal = e.target.closest('#legal-modal') || e.target.id === 'btn-open-legal';
                 if (!AppState.sessionId || isLegalModal) return;
                 
                 panicTapCount++;
                 clearTimeout(panicTimer);
                 
-                if (panicTapCount >= 3) {
-                    sendLeave();
+                if (panicTapCount >= 5) {
+                    sendLeave('panic');
                     resetApp();
-                    showToast(i18n[currentLang].panicMode, true);
+                    showToast(i18n[currentLang].welcome);
                     panicTapCount = 0;
                 } else {
                     panicTimer = setTimeout(() => { panicTapCount = 0; }, 800); 
@@ -966,7 +1002,12 @@
         });
 
         function startChat() {
-            clearTimers(); AppState.isChatActive = true; updateChatHeader(); saveState(); showVerifyStrip(); 
+            clearTimers(); document.getElementById('guest-wait').classList.add('hidden'); AppState.isChatActive = true;
+            AppState.lastPeer = Date.now();
+            AppState.hbTimer = setInterval(() => { // heartbeat every 15 s; silence for 60 s = peer is gone
+                sysPublish({ type: 'hb', senderId: AppState.clientId });
+                if (Date.now() - AppState.lastPeer > 60000) { showToast(i18n[currentLang].peerGone, true); sendLeave('panic'); resetApp(); }
+            }, 15000); updateChatHeader(); saveState(); showVerifyStrip(); 
             AppState.mqtt.subscribe(`qchat/${AppState.topic}`, { qos: 0 });
             loadChatHistory();
             switchView('view-chat'); setTimeout(scrollChatToBottom, 100);
@@ -975,7 +1016,7 @@
         function resetApp() {
             if (AppState.mqtt) { try { AppState.mqtt.end(true); } catch (e) {} AppState.mqtt = null; }
             
-            AppState.sessionId = null; AppState.role = null; AppState.isChatActive = false; AppState.guestWaitingId = null; AppState.chatHistory = []; cryptoKey = null; chatKey = null; AppState.peerId = null; seenMids.clear(); clearTimers(); AppState.rejects = 0; AppState.blockUntil = 0; AppState.txSeq = 0; AppState.rxSeq = 0; AppState.verified = false; AppState.pending = null; AppState.kp = null; AppState.nonce = null; AppState.sas = null; AppState.topic = null; AppState.brokerIdx = 0; AppState.otherName = i18n[currentLang].unknownUser; document.getElementById('modal-image-src').src = ''; document.getElementById('verify-strip').classList.add('hidden');
+            AppState.sessionId = null; AppState.role = null; AppState.isChatActive = false; AppState.guestWaitingId = null; AppState.chatHistory = []; cryptoKey = null; chatKey = null; AppState.peerId = null; seenMids.clear(); clearTimers(); AppState.rejects = 0; AppState.blockUntil = 0; AppState.txSeq = 0; AppState.rxSeq = 0; AppState.verified = false; AppState.pending = null; AppState.kp = null; AppState.nonce = null; AppState.sas = null; AppState.topic = null; AppState.brokerIdx = 0; AppState.otherName = i18n[currentLang].unknownUser; document.getElementById('modal-image-src').src = ''; document.getElementById('verify-strip').classList.add('hidden'); document.getElementById('guest-wait').classList.add('hidden'); AppState.ackPub = null; AppState.noWipeUntil = 0;
             sessionStorage.removeItem('nexus_state_v5');
 
             if (window.history.replaceState) {
@@ -986,7 +1027,7 @@
             const tInd = document.getElementById('typing-indicator').outerHTML;
             container.innerHTML = `
             <div class="text-center w-full my-2">
-                <span class="bg-[#ffeecd] dark:bg-[#182229] text-gray-700 dark:text-[#ffd279] text-xs px-3 py-1.5 rounded-lg shadow-sm inline-block max-w-xs leading-relaxed text-center" data-i18n="e2eMsg">
+                <span class="bg-[#ede9fe] dark:bg-[#1a1626] text-gray-700 dark:text-[#c4b5fd] text-xs px-3 py-1.5 rounded-lg shadow-sm inline-block max-w-xs leading-relaxed text-center" data-i18n="e2eMsg">
                     ${i18n[currentLang].e2eMsg}
                 </span>
             </div>` + tInd;
@@ -1003,6 +1044,14 @@
         function showApprovalModal() { document.getElementById('waiting-spinner').classList.add('hidden'); document.getElementById('area-room-permission').classList.remove('hidden'); }
         function closeApprovalModal() { document.getElementById('area-room-permission').classList.add('hidden'); if (!AppState.isChatActive) document.getElementById('waiting-spinner').classList.remove('hidden'); }
     </script>
-<div id="privacy-cover" class="hidden fixed inset-0 z-[9999] bg-gray-900 flex items-center justify-center text-5xl select-none">🔒</div>
+<div id="guest-wait" class="hidden fixed inset-0 z-[100] bg-black/60 flex items-center justify-center p-6">
+        <div class="w-full max-w-sm bg-white dark:bg-gray-800 border border-violet-200 dark:border-gray-700 rounded-2xl p-5 shadow-lg text-center">
+            <p class="font-bold text-gray-900 dark:text-white mb-1 animate-pulse" data-i18n="waitingHost">Waiting for host approval…</p>
+            <p class="text-xs text-violet-600 dark:text-violet-400 mb-2" data-i18n="sasLabel">Security code</p>
+            <p id="guest-sas" class="font-mono font-bold text-3xl tracking-widest text-gray-900 dark:text-white mb-4" dir="ltr"></p>
+            <button id="btn-guest-cancel" class="text-sm text-red-500 dark:text-red-400 hover:underline transition font-bold" data-i18n="endSession">End Session</button>
+        </div>
+    </div>
+    <div id="privacy-cover" class="hidden fixed inset-0 z-[9999] bg-gray-900 flex items-center justify-center text-5xl select-none">🔒</div>
 </body>
 </html>
